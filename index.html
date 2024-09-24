@@ -5,14 +5,44 @@
         </title>
     </head>
 
-    <center>
     <body>
+    <center>
         <h1>Todo Application</h1>
-        <div style="justify-content: center; align-content: center;">
-            <input type="text" placeholder="Enter todo">
+        <div id="parent">
+            <input type="text" placeholder="Enter todo" id="todoItem">
             <button onclick="addTodo()">Add</button>
         </div>
     </center>
 
     </body>
+
+    <script>
+        function addTodo(){
+            const todoItem = document.getElementById("todoItem").value;
+
+            if(todoItem === ""){
+                alert("Please enter a todo");
+            }
+            else{
+                let newTodo = document.createElement("div");
+
+                newTodo.innerHTML = todoItem;
+
+                let deleteButton = document.createElement("button");
+                deleteButton.innerHTML = "Delete";
+                newTodo.appendChild(deleteButton);
+
+
+                document.getElementById("parent").appendChild(newTodo);
+                document.getElementById("todoItem").value = "";
+                deleteButton.onclick = function(){
+                    deleteTodo(newTodo);
+                }
+                }
+            }
+        function deleteTodo(newTodo){
+            newTodo.remove();
+            }
+          
+    </script>
 </html>
